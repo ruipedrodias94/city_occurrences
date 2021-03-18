@@ -25,7 +25,9 @@ jobs:
         with:
           python-version: 3.7
       - name: List directories
-        run: ls
+        run: /
+          sudo apt-get tree
+          tree
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
