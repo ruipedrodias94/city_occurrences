@@ -86,13 +86,6 @@ class TestSuite(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data), 3)
 
-    def test_get_all_occurrences_without_authentication(self):
-        """ User one tries to get all the occurrences in the system, but doesn't have authentication """
-        response = self.client.get(
-            "/occurrences/")
-
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-
     def test_get_all_occurrences_by_author(self):
         """ User one gets all the occurrences in the system by author """
         login = self.client.login(username="user_one", password="password")
