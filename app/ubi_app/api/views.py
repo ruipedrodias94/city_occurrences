@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User
+
 from rest_framework import permissions, viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -7,6 +7,8 @@ from rest_framework import mixins, generics
 from rest_framework.permissions import IsAdminUser
 
 from .models import Occurrence
+from django.contrib.auth.models import User
+
 # from snippets.permissions import IsOwnerOrReadOnly
 from .serializers import UserSerializer, OccurrenceSerializer
 

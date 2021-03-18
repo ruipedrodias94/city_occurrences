@@ -5,6 +5,9 @@ from geopy import distance
 
 
 class Occurrence(models.Model):
+
+    """ Describes the occurrence model"""
+
     description = models.TextField(max_length=200, null=True, blank=True)
     lat = models.FloatField(blank=True, default='')
     lon = models.FloatField(blank=True, default='')
@@ -22,7 +25,8 @@ class Occurrence(models.Model):
         ordering = ['created_at', 'status']
 
     def get_distance_from_hq(self, lat, lon):
-        coords_1 = (40.646860, -8.642999)
+        """ Get the distance between the occurrence and the ubiwhere office"""
+        coords_1 = (40.646860, -8.642999)  # Coords to the office
         coords_2 = (lat, lon)
         return distance.distance(coords_1, coords_2).km
 
@@ -33,5 +37,6 @@ class Occurrence(models.Model):
         return 'Description: {}, created_at: {}, status: {}, category:{}'.format(self.description, self.created_at, self.status, self.category)
 
     def save(self, *args, **kwargs):
+        """ Custom method to save the model in the database"""
         self.distance_from_hq = self.get_distance_from_hq(self.lat, self.lon)
         super().save(*args, **kwargs)
