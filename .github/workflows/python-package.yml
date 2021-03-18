@@ -42,4 +42,4 @@ jobs:
           coverage report
       - name: Django Unit Testing
         run: |
-          python3 app/manage.py test
+          python app/manage.py test
