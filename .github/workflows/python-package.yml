@@ -26,16 +26,20 @@ jobs:
           python-version: 3.7
       - name: List directories
         run: ls
+      - name: psycopg2 prerequisites
+        run: sudo apt-get install libpq-dev
+      - name: Change directory
+        run: cd app
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r app/requirements.txt
+          pip install -r requirements.txt
       - name: Run Migrations # run migrations to create table in side car db container
-        run: python app/manage.py migrate
+        run: python manage.py migrate
       - name: Coverage report
         run: |
           pip install coverage
-          coverage run app/manage.py test
+          coverage run manage.py test
           coverage report
       - name: Django Testing
-        run: python app/manage.py test
+        run: python manage.py test
