@@ -30,10 +30,12 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r app/requirements.txt
+      - name: Run Migrations # run migrations to create table in side car db container
+        run: python app/manage.py migrate
       - name: Coverage report
         run: |
           pip install coverage
           coverage run app/manage.py test
           coverage report
       - name: Django Testing
-        run: python3 app/manage.py test
+        run: python app/manage.py test
