@@ -8,7 +8,7 @@
 
 [ABSTRACT](docs/abstract.md)
 
-## Modo de uso
+## Como executar a aplicação
 
 [MODO DE USO](docs/run.md)
 
@@ -18,4 +18,4 @@
 
 ## Endpoints
 
-[ENDPOINTS](docs/enpoints.md)
+[ENDPOINTS](docs/endpoints.md)
